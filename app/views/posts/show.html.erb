@@ -1,30 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @post.title %>
-</p>
+</h1>
 
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
+<p>By <%= @post.author %>, <%= time_ago_in_words @post.created_at %> ago</p>
 
-<p>
-  <strong>Context:</strong>
-  <%= simple_format @post.context %>
-</p>
-<%= simple_format @post.context %>
-<p>
-  <strong>Is published:</strong>
-  <%= @post.is_published %>
-</p>
+<p><%= simple_format @post.context %></p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 
 <hr>
-<h2>Comments</h2>
+<h2><%= link_to pluralize(@post.comments.count, 'Comment'), post_comments_path(@post) %></h2>
 <p> Write your comments:</p>
 <%= render 'comments/form' %>
 
