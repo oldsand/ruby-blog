@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.text :context
-      t.boolean :is_published
+      t.boolean :is_published, default: true
 
       t.timestamps null: false
     end
